@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "as.timeseries <- function(x,start=1,end=numeric(),frequency=1){\n  ts(x,start,end,frequency)\n}\n",
+    "created" : 1493876584724.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "339559933",
+    "id" : "FE39EFC3",
+    "lastKnownWriteTime" : 1493877117,
+    "last_content_update" : 1493877117074,
+    "path" : "C:/Users/Abzooba/Desktop/EDA/R/as_timeseries.R",
+    "project_path" : "R/as_timeseries.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

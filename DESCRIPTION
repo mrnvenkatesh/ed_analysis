@@ -1,0 +1,10 @@
+Package: EDA
+Title: Exploratory data analysis
+Version: 0.0.1
+Authors@R: person("Venkatesh", "Mummidi", email = "rnvenkatesh.mummidi@abzooba.com", role = c("aut", "cre"))
+Description: What the package helps us in xploratory data analysis
+Depends: Hmisc,ggplot2,mice,missForest,gmodels,TSA
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000

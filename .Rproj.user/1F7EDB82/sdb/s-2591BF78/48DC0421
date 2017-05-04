@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "get_hist <- function(data){\n  data <- as.data.frame(data)\n  nam <- names(data)\n  print(\"Histogram is generated for \")\n  for(i in nam){\n    if(class(data[,i])==\"numeric\"|class(data[,i])==\"integer\")\n    {\n      num.var <- i\n      print(num.var)\n      print(ggplot(data,aes(data[,num.var]))+geom_histogram(bins=50,fill='red',colour='black')+\n              geom_vline(aes(xintercept = mean(data[,num.var])),\n                         linetype='dashed',color='blue',size=1))\n\n    }\n  }\n}\n",
+    "created" : 1493115553702.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3339722638",
+    "id" : "48DC0421",
+    "lastKnownWriteTime" : 1493877279,
+    "last_content_update" : 1493877279563,
+    "path" : "~/EDA/R/get_hist.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

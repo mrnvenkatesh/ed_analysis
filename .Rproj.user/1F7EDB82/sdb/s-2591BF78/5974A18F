@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "tr <- read.csv('Training Set.csv',header = F)\nqu <- read.csv('Quiz Set.csv',header = F)\n\nnames(tr)\nnames(qu)\ntr <- tr[,-51]\ndim(tr)\ntable(is.na(tr))\ntable(complete.cases(tr)) # no missing data\n\nlibrary(caTools)\nindx <- sample.split(tr[,51],0.8)\ntr.train <- tr[indx,]\ntr.test <- tr[-indx,]\n\n#for(i in 1:51){\n#  tr[,i] <- as.factor(tr[,i])\n#}\n\n#for(i in 1:50){\n#  qu[,i] <- as.factor(qu[,i])\n#}\n\nstr(tr)\nstr(qu)\n\n#### model\nlibrary(rpart)\n\nfit <- rpart(V52~.,tr.train)\npred <- round(predict(fit,tr.test))\ntable(pred,tr.test$V52)\n\nmean(pred==tr.test$V52)\n\n## rf\nlibrary(randomForest)\nft.rf <- randomForest(V52~.,tr.train,information=T)\npred.rf <- round(predict(ft.rf,tr.test))\ntable(pred.rf,tr.test$V52)\n\nmean(pred.rf==tr.test$V52)\n\n#gbm\nlibrary(gbm)\nfit.gbm <- gbm(V52~V1+V2+V3,data = tr.train,distribution = \"gaussian\")\npred.gbm <- predict(fit.gbm,tr.test,n.trees = 10)\n?gbm\n\n#nn\nlibrary(neuralnet)\nlibrary(nnet)\n?neuralnet\nerr <- c()\npred.nn <- c()\nrm(pred.nn)\nfor(i in 1:10){\n  print(i)\n  fit.nn <- nnet(V52~.,data=tr.train,size=i,maxit=200)\n  pred.nn <- predict(fit.nn,tr.test)\n  pred.nn <- round(pred.nn)\n  table(pred.nn,tr.test$V52)\n  err[i] <- mean(pred.nn==tr.test$V52)\n}\nerr\n\npred.nn <- predict(fit.nn,tr.test)\npred.nn <- round(pred.nn)\ntable(pred.nn,tr.test$V52)\nmean(pred.nn==tr.test$V52)\ntable()\n?nnet\n\n## entire data\nfit.rf <- randomForest(V52~.,tr,information=T)\npred.rf <- round(predict(fit.rf,qu))\n\nwrite.csv(pred.rf,'mrnvenkatesh_quiz_set_predictions.csv')\n##############################\ndim(tr);dim(qu)\ntotal.data <- rbind(tr[,-51],qu)\n\nft.rf.tot <- randomForest(V52~.,total.data,information=T)\npred.rf <- round(predict(ft.rf,tr.test))\ntable(pred.rf,tr.test$V52)\n\n",
+    "created" : 1493359263570.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "310147773",
+    "id" : "5974A18F",
+    "lastKnownWriteTime" : 1493722022,
+    "last_content_update" : 1493722022298,
+    "path" : "~/freelan.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

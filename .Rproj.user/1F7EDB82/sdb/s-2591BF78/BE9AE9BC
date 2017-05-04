@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "impute_missing <- function(x,m=1,maxit = 500, method = 'pmm', seed = NA,printFlag = F){\n  imputed <- mice(x,m,maxit , method , seed,printFlag)\n  imputed$imp\n}\n\n",
+    "created" : 1493811574750.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3784661179",
+    "id" : "BE9AE9BC",
+    "lastKnownWriteTime" : 1493876883,
+    "last_content_update" : 1493876883370,
+    "path" : "C:/Users/Abzooba/Desktop/EDA/R/impute_missing.R",
+    "project_path" : "R/impute_missing.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "impute_outliers <- function(x,method = 'whisker'){\n  if(length(boxplot.stats(x)$out)>0){\n    out <- boxplot.stats(x)$out\n    max.whisker <- boxplot.stats(x)$stats[5]\n    out.index <- which(x %in% (boxplot.stats(x)$out))\n    if(method=='mean'){\n      mean=mean(x)\n      x[out.index] <- mean\n      cat(\" outliers: \", out,\"\\n\",\"Replaced by: \",mean)\n    }\n    else if(method==\"median\"){\n      med=median(x)\n      x[out.index] <- med\n      cat(\" outliers: \", out,\"\\n\",\"Replaced by: \",med)\n    }\n      else{\n        x[out.index] <- max.whisker\n        cat(\" outliers: \", out,\"\\n\",\"Replaced by: \",max.whisker)\n      }\n    }\n\n  else\n    print(\"There are no outliers\")\n}\n",
+    "created" : 1493795597954.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2912875897",
+    "id" : "7F3BDDE6",
+    "lastKnownWriteTime" : 1493810542,
+    "last_content_update" : 1493810542851,
+    "path" : "C:/Users/Abzooba/Desktop/EDA/R/impute_outliers.R",
+    "project_path" : "R/impute_outliers.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

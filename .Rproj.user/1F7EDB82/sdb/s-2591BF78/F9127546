@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"TS\"\nauthor: \"Venkatesh Mummidi\"\ndate: \"27 April 2017\"\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n### Timeseries\nConsidering inbuild dataset 'Airpassengers' for analysis.  \n\nEDA for timeseries can include  \n\n-Plotting the raw data using line charts, histograms, bi-histograms, probability plots, lag plots, etc.  \n-Plotting simple statistics such as mean plots, standard deviation plots, box plots, and main effects plots of the raw data.  \n\n\n```{r}\ndata(\"AirPassengers\")\ncycle(AirPassengers)\n```\nIndicates that this is a monthly timeseries data. This can also be determined by frequency command.\n```{r}\nfrequency(AirPassengers)\n```\n```{r}\nmean(AirPassengers);range(AirPassengers)\nhist(AirPassengers)\nplot(AirPassengers)\n```\n  \nWe can see that data is not stationary as both mean and variance are changing.  \n```{r}\nplot(aggregate(AirPassengers),ylab=\"Mean of each month\") #plotting mean of each month\nboxplot(AirPassengers~cycle(AirPassengers)) #Boxplot of data across each month\n\n```\n  \n  As the data is not stationary, we need to remove stationary. Differentiate the data to detrend the data. Also we need to remove unequal variances. We do this using log of the series  \n\n```{r}\nplot(diff(log(AirPassengers))) #Now we can observe the data is stationary.\n```\n\n#### Determine whether the timeseries is AR or MA model\nThis can be known from ACF(Auto correlation function) and PACF (Partial Auto correlation function)\n\nACF is a plot of total correlation between different lag functions. For instance, in Air passengers problem, the passengers at time point t is x(t). We are interested in the correlation of x(t) with x(t-1) , x(t-2) and so on.   \n  \nIn a moving average series of lag n, we will not get any correlation between x(t) and x(t – n -1) . Hence, the total correlation chart cuts off at nth lag. So it becomes simple to find the lag for a MA series. For an AR series this correlation will gradually go down without any cut off value.   \n\nThe partial correlation of each lag, it will cut off after the degree of AR series. For instance,if we have a AR(1) series,  if we exclude the effect of 1st lag (x (t-1) ), our 2nd lag (x (t-2) ) is independent of x(t). Hence, the partial correlation function (PACF) will drop sharply after the 1st lag. \n\n\n```{r}\nacf(diff(log(AirPassengers)))\npacf(diff(log(AirPassengers)))\n```\n\n\nThere are three parameters for passing to the arima model -> (p,d,q)  \np - Order of AR  \nd - Order of differentiation  \nq - order of MA  \n\nClearly, ACF plot cuts off after the first lag. Hence, we understood that value of p should be 0 as the ACF is the curve getting a cut off. So value of q should be 1. As we are differentiating once, value of d is 1.  \n  \nFinally this is a MA1 timeseries model.  \n\n```{r}\n# Fitting an arima model for timeseries data\n(fit <- arima(log(AirPassengers), c(0, 1, 1),seasonal = list(order = c(0, 1, 1), period = 12)))\n\n```\n\n#### What if there are outliers in timeseries data?\nAdding a potential outlier to our data.  \n```{r}\nlibrary(TSA)\nap.out <- AirPassengers\nap.out[141] <- 1100  #Adding a value of 1000 at index 141.\nplot(ap.out)\nfit.out <- arima(log(ap.out),c(0,1,1),\n             seasonal = list(order=c(0,1,1),period=12))\ndetectAO(fit.out)\ndetectIO(fit.out)\n```\n  \ndetectAO detects additive outliers. Additive outliers affects only single observation.  \ndetectIO detects innovative outliers. This effect continues in a lagged fashion with all future observations. We can see that the outlier we added is Innovative outlier and is detected by detectIO function.  \n  \nind represents time series index of outlier.\n\n\n\n\n",
+    "created" : 1493273672032.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2393633519",
+    "id" : "F9127546",
+    "lastKnownWriteTime" : 1493292349,
+    "last_content_update" : 1493292349480,
+    "path" : "D:/Work/TS.rmd",
+    "project_path" : null,
+    "properties" : {
+        "last_setup_crc32" : "",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

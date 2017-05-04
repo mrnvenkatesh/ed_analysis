@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getplots_ts <- function(data){\n  par(mfrow=c(2,2))\n  hist(data);plot(data);plot(aggregate(data),ylab=\"Mean of each cycle\");\n  boxplot(data~cycle(data))\n}\n\ndiff.plot <- function(data,diff=1,log=T){\n  par(mfrow=c(1,1))\n  if (log==T) plot(diff(log(data),diff))\n  else plot(diff(data,diff))\n}\n\nacf.plot  <- function(data,diff=1,log=T) {\n  if(log==T&&diff >= 1) acf(diff(log(data),diff))\n  else if(log==T&&diff < 1) acf(log(data))\n    else if(log==F&&diff >= 1) acf(diff(data),diff)\n      else acf(data)\n\n}\n\npacf.plot  <- function(data,diff=1,log=T) {\n  if(log==T&&diff >= 1) pacf(diff(log(data),diff))\n  else if(log==T&&diff < 1) pacf(log(data))\n  else if(log==F&&diff >= 1) pacf(diff(data),diff)\n  else pacf(data)\n\n}\n\ndetect_tsouliers <- function(arima){\n  cat(\"Additive outliers:\\n\")\n  ao <- detectAO(fit.out)\n  cat(\"\\n \\n\")\n  cat(\"Intelligent outliers:\\n\")\n  io <- detectIO(fit.out)\n\n}\n",
+    "created" : 1493887843084.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2938811451",
+    "id" : "40DC1830",
+    "lastKnownWriteTime" : 1493891626,
+    "last_content_update" : 1493891626381,
+    "path" : "C:/Users/Abzooba/Desktop/EDA/R/getplots_ts.R",
+    "project_path" : "R/getplots_ts.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 14,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\nget_outlier <- function(x){\n\n  list(stats=boxplot.stats(x)$stats,outliers=boxplot.stats(x)$out,\n       indices=which(x %in% (boxplot.stats(x)$out)))\n}\n",
+    "created" : 1493721129189.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1782021240",
+    "id" : "7093818C",
+    "lastKnownWriteTime" : 1493722225,
+    "last_content_update" : 1493722297735,
+    "path" : "C:/Users/Abzooba/Desktop/EDA/R/get_outliers.R",
+    "project_path" : "R/get_outliers.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

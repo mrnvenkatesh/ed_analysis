@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "crosstab <- function(x,y){\n  return(CrossTable(x,y))\n}\n",
+    "created" : 1493710062009.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3814941616",
+    "id" : "A2193E9D",
+    "lastKnownWriteTime" : 1493710387,
+    "last_content_update" : 1493710387325,
+    "path" : "C:/Users/Abzooba/Desktop/EDA/R/crosstab.R",
+    "project_path" : "R/crosstab.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

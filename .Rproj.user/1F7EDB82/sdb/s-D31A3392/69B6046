@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(devtools)\nlibrary(roxygen2)\ninstall('EDA')\nlibrary(EDA)\n\nget_hist(mpg)\nget_boxplot(mpg)\ndesc(mpg$manufacturer)\n\n\n\nprop.table(table(mpg$manufacturer,mpg$cyl))\nCrossTable(mpg$manufacturer,mpg$cyl)\n\ncrosstab(mpg$manufacturer,mpg$cyl)\n??crosstab\n?impute_outliers\n\nboxplot.stats\n\nis.outlier <- function(x){\n  stats <- boxplot.stats(x)$stats\n  values <- boxplot.stats(x)$out\n  list(stats=stats,values=values)\n}\n\nout <- is.outlier(mpg$hwy)\n\nget_outlier(mpg$cty)\n?get_o\ndevtools::document()\n\nget_outlier(mpg$hwy)\n\nimpute_outliers(mpg$hwy,method = whisker)\nimpute_outliers(mpg$cty,method = 'mean')\nimpute_outliers((mpg$hwy))\nimpute_outliers((mpg$hwy),method = 'median')\nimpute_outliers((mpg$hwy),method = 'mean')\n\nmean(mpg$hwy)\nmedian(mpg$hwy)\n\nval <- impute_missing(mpg.mis)\n######################### ts\n\nplot(cbe.ts)\nts.plot(cbe.ts)\n\ngetplots_ts(beer.ts)\ndiff.plot(AirPassengers,log = F,diff = 2)\ndiff.plot(AirPassengers,diff = 1,log = F)\n\nacf.plot(AirPassengers)\nacf.plot(AirPassengers,diff = 2,log = F)\nacf(diff(AirPassengers),2)\n\npacf.plot(AirPassengers)\n\ndetect_tsouliers(fit.out)\n\ndet=detectAO(fit.out)\ndet$ind\n\ninstall_github(\"mrnvenkatesh/ed_analysis\")\ninstall_bitbucket(\"raghu_mummidi/xap_eda\",username = \"raghu_mummidi\",password = \"venki566\")\nlibrary(EDA)\n\n",
+    "created" : 1493184276750.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3891277594",
+    "id" : "69B6046",
+    "lastKnownWriteTime" : 1493975211,
+    "last_content_update" : 1493977895626,
+    "path" : "C:/Users/Abzooba/Desktop/mian.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

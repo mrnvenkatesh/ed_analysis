@@ -1,5 +1,5 @@
-impute_missing <- function(x,m=1,maxit = 500, method = 'pmm', seed = NA,printFlag = F){
-  imputed <- mice(x,m,maxit , method , seed,printFlag)
+impute_missing <- function(x,m=1,maxit = 50, seed = 10,printFlag = F){
+  imputed <- mice(x,m=m,maxit=maxit , method=method , seed=seed,printFlag=printFlag)
   imputed$imp
 }
 
